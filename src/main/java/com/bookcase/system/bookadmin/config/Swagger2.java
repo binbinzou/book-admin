@@ -1,4 +1,4 @@
-package com.bookase.system.bookadmin.config;
+package com.bookcase.system.bookadmin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

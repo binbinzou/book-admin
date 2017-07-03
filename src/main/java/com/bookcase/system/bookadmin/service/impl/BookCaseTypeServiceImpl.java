@@ -15,6 +15,7 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.bookcase.common.bookcommon.contant.CommonResultCodeConstant;
@@ -22,6 +23,7 @@ import com.bookcase.common.system.bookframework.page.PageInfo;
 import com.bookcase.common.system.bookframework.returnresult.GeneralContentResult;
 import com.bookcase.common.system.bookframework.returnresult.GeneralPagingResult;
 import com.bookcase.common.system.bookframework.returnresult.GeneralResult;
+import com.bookcase.system.bookadmin.client.BaseBookCaseTypeClient;
 import com.bookcase.system.bookadmin.service.BookCaseTypeService;
 import com.bookcase.system.bookbasemgmt.dto.bookcasetype.BookCaseTypeReqBody;
 import com.bookcase.system.bookbasemgmt.dto.bookcasetype.BookCaseTypeReqParam;
@@ -43,41 +45,44 @@ import com.bookcase.system.bookbasemgmt.otd.bookcasetype.BookCaseTypeRspBody;
 @Slf4j
 public class BookCaseTypeServiceImpl implements BookCaseTypeService {
 
+	@Autowired
+	private BaseBookCaseTypeClient bookCaseTypeClient;
 
 	@Override
 	public GeneralPagingResult<List<BookCaseTypeRspBody>> findBookCaseTypes(BookCaseTypeReqQuery query,
 			String page, String size) {
-				return null;
+				return bookCaseTypeClient.findBookCaseTypes(query, page, size);
+		
 	}
 
 	@Override
 	public GeneralContentResult<BookCaseTypeRspBody> findBookCaseTypeById(
 			String bookcasetypeId) {
-				return null;
+				return bookCaseTypeClient.findBookCaseTypeById(bookcasetypeId);
 	}
 
 	@Override
 	public GeneralContentResult<String> createBookCaseType(
 			BookCaseTypeReqBody bookCaseTypeReqBody) {
-				return null;
+				return bookCaseTypeClient.createBookCaseType(bookCaseTypeReqBody);
 	}
 
 	@Override
 	public GeneralResult updateBookCaseType(String bookcasetypeId,
 			BookCaseTypeReqBody bookCaseTypeReqBody) {
-				return null;
+				return bookCaseTypeClient.updateBookCaseType(bookcasetypeId, bookCaseTypeReqBody);
 	}
 
 	@Override
 	public GeneralResult deleteBookCaseTypes(
-			BookCaseTypeReqParam bookCaseTypeReqParam) {
-				return null;
+			String bookCaseTypeId) {
+				return bookCaseTypeClient.deleteBookCaseTypes(bookCaseTypeId);
 	}
 
 	@Override
 	public GeneralContentResult<List<BookCaseTypeRspBody>> findBookCaseTypeByName(
 			String name) {
-				return null;
+				return bookCaseTypeClient.findBookCaseTypeByName(name);
 	}
 
 }

@@ -1,0 +1,12 @@
+server:
+  port: 9101
+spring:
+  application:
+    name: book-admin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/
+feign:
+  hystrix:
+    enabled: false
